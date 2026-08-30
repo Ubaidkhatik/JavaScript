@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .child{
+            border: 2px solid black;
+        background-color: yellow;
+            margin: 14px;
+            padding: 14px;
+        }
+        .childcontainer{
+            border: 2px solid black;
+            background-color: aqua;
+            margin: 14px;padding: 14px;
+        }
+        .container{
+            border: 2px solid black;
+            background-color: crimson;
+            margin: 14px;
+            padding: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">Container
+        <div class="childcontainer">Child Container
+            <div class="child"> Child</div>
+        </div>
+    </div>
+    <script>
+        document.querySelector(".child").addEventListener("click",()=>{
+            alert("Click on child")
+        })
+        document.querySelector(".childcontainer").addEventListener("click",()=>{
+            alert("Click on childcontainer")
+        })
+        document.querySelector(".container").addEventListener("click",()=>{
+            alert("Click on ")
+        })
+
+
+        function getRandomColor(){
+    let val1 = Math.ceil(0 + Math.random()* 255);
+    let val2 = Math.ceil(0 + Math.random()* 255);
+    let val3 = Math.ceil(0 + Math.random()* 255);
+    return `rgb(${val1}, ${val2}, ${val3})`
+ }
+ setInterval(()=>{
+    document.querySelector(".childcontainer").style.backgroundColor=getRandomColor()
+    document.querySelector(".child").style.backgroundColor=getRandomColor()
+    document.querySelector(".container").style.backgroundColor=getRandomColor()
+ },1000)
+    </script>
+    
+</body>
+</html>
