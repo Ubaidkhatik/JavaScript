@@ -5,31 +5,35 @@ let students = [
   { name: "Neha", marks: [90, 88, 92] }
 ];
 
-function getStudentsWithHighAverageAndPerfectMark(students) {
-  let newarr = [];
+function getBestStudent(students) {
+  let highest = null;
+  let hstudent = null;
 
   for (let i = 0; i < students.length; i++) {
     let count = 0;
+    let highCount = 0;
     let sum = 0;
-    let found = false;
 
     for (let j = 0; j < students[i].marks.length; j++) {
       sum = sum + students[i].marks[j];
       count++;
 
-      if (students[i].marks[j] === 90) {
-        found = true;
+      if (students[i].marks[j] >= 80) {
+        highCount++;
       }
     }
 
     let average = sum / count;
 
-    if (average >= 80 && found) {
-      newarr.push(students[i].name);
+    if (average >= 80 && highCount >= 2) {
+      if (highest === null || average > highest) {
+        highest = average;
+        hstudent = students[i];
+      }
     }
   }
 
-  return newarr;
+  return hstudent;
 }
 
-console.log(getStudentsWithHighAverageAndPerfectMark(students));
+console.log(getBestStudent(students));
