@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <style>
+        .conatainer{
+            border: 2px solid black;
+            padding: 10px;
+            width: fit-content;
+            background-color: beige;
+            border-radius: 2px;
+
+        }
+        button{
+            margin: 5px;
+            padding: 5px;
+            background-color: #4984a8;
+            font-weight: bold;
+            color: white;
+            border-radius: 3px;
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: #286a93; ;
+        }
+    </style>
+</head>
+<body>
+    <div class="conatainer">
+    <h1 id="count">0</h1>
+    <p id="message">Zero</p>
+
+    <button id="Decrement">Decrement -</button>
+    <button id="Increment">Increment +</button>
+    <button id="Reset">Reset</button>
+    </div>
+
+    <script>
+        let count = 0;
+
+        const counter = document.getElementById("count");
+        const message = document.getElementById("message");
+
+        const dec = document.getElementById("Decrement");
+        const inc = document.getElementById("Increment");
+        const reset = document.getElementById("Reset");
+
+        function updateMessage() {
+           if (count > 0) {
+    message.textContent = "Positive";
+    message.style.color = "green";
+    counter.style.color=" Green"
+}      else if (count < 0) {
+                message.textContent = "Negative";
+                message.style.color = "red"
+                counter.style.color = "red"
+            } else {
+                message.textContent = "Zero";
+                message.style.color="black"
+                counter.style.color="black"
+            }
+        }
+
+        dec.addEventListener("click", () => {
+            count--;
+            counter.textContent = count;
+            updateMessage();
+        });
+
+        inc.addEventListener("click", () => {
+            count++;
+            counter.textContent = count;
+            updateMessage();
+        });
+
+        reset.addEventListener("click", () => {
+            count = 0;
+            counter.textContent = count;
+            updateMessage();
+        });
+    </script>
+</body>
+</html>

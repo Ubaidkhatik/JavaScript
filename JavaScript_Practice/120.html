@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM Practice</title>
+</head>
+<body>
+    <h1 id="heading">Hello JavaScript!</h1>
+
+    <button id="changeBtn">Change Text</button>
+
+    <script>
+    const heding = document.getElementById("heading")
+    const button = document.getElementById("changeBtn")
+  button.addEventListener("click", () => {
+    if (heading.textContent === "Hello JavaScript!") {
+        heading.textContent = "JavaScript is Awesome!!";
+    } else {
+        heading.textContent = "Hello JavaScript!";
+    }
+});
+     
+    </script>
+</body>
+</html>
