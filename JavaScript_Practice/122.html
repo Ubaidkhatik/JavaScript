@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+
+    <style>
+        body{
+            text-align: center;
+        }
+        form{
+            border: 2px solid black;
+            border-radius: 5px;
+            background-color: rgb(211, 196, 196);
+            width: fit-content;
+        }
+        input {
+            font-size: large;
+            color: gray;
+            border: 1px solid gray;
+            padding: 5px;
+            border-radius: 3px;
+            margin: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 5px;
+            border-radius: 5px;
+            background-color: rgb(62, 95, 150);
+            color: white;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: rgb(33, 80, 161);
+        }
+
+        #msg {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="myForm">
+        Name:
+        <input type="text" id="in2" placeholder="Enter name" required>
+        <br>
+
+        Email:
+        <input type="email" id="in3" placeholder="Enter email" required>
+        <br>
+
+        Password:
+        <input type="password" id="in" placeholder="Enter Password" required minlength="6">
+        <br>
+
+        <button type="button" id="btn">Show Password</button>
+        <button type="submit" id="sub">Submit</button>
+
+        <p id="msg"></p>
+    </form>
+
+    <script>
+        let Inputvar = document.getElementById("in");
+        let btn = document.getElementById("btn");
+
+        btn.addEventListener("click", () => {
+            if (Inputvar.type === "password") {
+                Inputvar.type = "text";
+                btn.innerText = "Hide Password";
+            } else {
+                Inputvar.type = "password";
+                btn.innerText = "Show Password";
+            }
+        });
+
+        let Inp2 = document.getElementById("in2");
+        let Inp3 = document.getElementById("in3");
+        let form = document.getElementById("myForm");
+        let msg = document.getElementById("msg");
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            if (
+                Inp2.value.trim() === "" ||
+                Inp3.value.trim() === "" ||
+                Inputvar.value.trim() === ""
+            ) {
+                msg.textContent = "Please fill all fields!";
+                msg.style.color = "red";
+            } else if (!Inp3.checkValidity()) {
+                msg.textContent = "Enter a valid email!";
+                msg.style.color = "red";
+            } else {
+                msg.textContent = "Form submitted successfully!";
+                msg.style.color = "green";
+            }
+        });
+    </script>
+
+</body>
+</html>
